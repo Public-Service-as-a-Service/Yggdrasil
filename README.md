@@ -8,10 +8,10 @@ Yggdrasil deploys all backend microservices and databases for the crisis informa
 |---|---|---|
 | api-service-notifier | 8082 | Sends notifications via SMS and Teams |
 | api-service-webappusers | 8081 | Manages web app users and authentication |
-| api-service-sms-sender | - | Sends SMS via Telia and Linkmobility |
-| api-service-teams-sender | - | Sends messages via Microsoft Teams |
-| csv-filereader | - | Imports organization and employee data from CSV |
-| MariaDB | 3306 | notifier and users databases |
+| api-service-sms-sender | internal | Sends SMS via Telia and Linkmobility |
+| api-service-teams-sender | internal | Sends messages via Microsoft Teams |
+| csv-filereader | internal | Imports organization and employee data from CSV |
+| MariaDB | internal | notifier and users databases |
 
 ## Requirements
 
