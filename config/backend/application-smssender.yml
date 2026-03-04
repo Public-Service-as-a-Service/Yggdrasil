@@ -1,0 +1,41 @@
+logging:
+  level:
+    root: INFO
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-sms-sender
+
+scheduler:
+  linkmobility:
+    health:
+      cron: "-"
+
+provider:
+  telia:
+    base-url: ${TELIA_BASE_URL}
+    enabled: true
+    priority: 1
+    flash-capable: true
+    oauth2:
+      token-url: ${TELIA_TOKEN_URL}
+      client-id: ${TELIA_CLIENT_ID}
+      client-secret: ${TELIA_CLIENT_SECRET}
+  linkmobility:
+    base-url: ${LINKMOBILITY_BASE_URL}
+    enabled: true
+    priority: 2
+    flash-capable: true
+    platform-id: ${LINKMOBILITY_PLATFORM_ID}
+    platform-partner-id: ${LINKMOBILITY_PLATFORM_PARTNER_ID}
+    basicauth:
+      username: ${LINKMOBILITY_USERNAME}
+      password: ${LINKMOBILITY_PASSWORD}
+
+openapi:
+  name: api-service-sms-sender
+  title: SmsSender
+  version: '@project.version@'

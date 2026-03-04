@@ -1,0 +1,45 @@
+logging:
+  level:
+    root: INFO
+
+server:
+  port: 8082
+
+spring:
+  application:
+    name: notifier
+  datasource:
+    username: ${ENV_DB_USERNAME}
+    password: ${ENV_DB_PASSWORD}
+    url: ${ENV_DB_URL}
+  flyway:
+    enabled: true
+  security:
+    oauth2:
+      client:
+        provider:
+          sms-sender:
+            token-uri: ${ENV_SMS_SENDER_TOKEN_URL}
+          teams-sender:
+            token-uri: ${ENV_TEAMS_SENDER_TOKEN_URL}
+        registration:
+          sms-sender:
+            client-id: ${ENV_SMS_SENDER_CLIENT_ID}
+            client-secret: ${ENV_SMS_SENDER_CLIENT_SECRET}
+            authorization-grant-type: client_credentials
+          teams-sender:
+            client-id: ${ENV_TEAMS_SENDER_CLIENT_ID}
+            client-secret: ${ENV_TEAMS_SENDER_CLIENT_SECRET}
+            authorization-grant-type: client_credentials
+
+integration:
+  sms-sender:
+    base-url: ${ENV_SMS_SENDER_BASE_URL}
+    sender: Sundsvall
+  teams-sender:
+    base-url: ${ENV_TEAMS_SENDER_BASE_URL}
+
+openapi:
+  name: ${spring.application.name}
+  title: ${spring.application.name}
+  version: '@project.version@'

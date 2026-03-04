@@ -1,0 +1,52 @@
+logging:
+  level:
+    root: INFO
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: csv-filereader
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+  flyway:
+    enabled: false
+  jdbc:
+    template:
+      fetch-size: 1000
+
+import:
+  enabled: true
+  # File locations
+  incoming-dir: /data/incoming
+  processed-dir: /data/processed
+  failed-dir: /data/failed
+  file-source-dir: /data/temp
+  # Expected file names
+  org-file-name: OrgExport.csv
+  emp-file-name: EmpExport.csv
+  # Batch size
+  employee-batch-size: ${EMPLOYEE_BATCH_SIZE}
+  organization-batch-size: ${ORGANIZATION_BATCH_SIZE}
+
+scheduler:
+  scheduled-org-import:
+    cron: "0 0 * * * *"
+    name: "org-import"
+    shedlock-lock-at-most-for: "PT2H"
+    maximum-execution-time: "PT2H"
+  scheduled-emp-import:
+    cron: "0 0 * * * *"
+    name: "emp-import"
+    shedlock-lock-at-most-for: "PT2H"
+    maximum-execution-time: "PT2H"
+
+
+openapi:
+  name: ${spring.application.name}
+  title: ${spring.application.name}
+  version: '@project.version@'
