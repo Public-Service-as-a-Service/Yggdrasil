@@ -1,0 +1,24 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "POST",
+    "url": "/token",
+    "headers": {
+      "Content-Type": {
+        "matches": "application/x-www-form-urlencoded.*"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "jsonBody": {
+      "access_token": "mock-token-123456789",
+      "token_type": "bearer",
+      "expires_in": 3600,
+      "scope": "device_2032e1f6-bd0e-4577-81f2-c814362f0ffa"
+    }
+  }
+}

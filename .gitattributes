@@ -1,0 +1,2 @@
+config/wiremock/tests/*.sh text eol=lf
+config/wiremock/tests/**/*.sh text eol=lf
