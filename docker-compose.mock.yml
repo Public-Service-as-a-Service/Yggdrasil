@@ -1,0 +1,52 @@
+services:
+  wiremock:
+    image: wiremock/wiremock:3.0.0-1
+    ports:
+      - "9090:8080"
+    volumes:
+      - ./config/wiremock:/home/wiremock
+    command:
+      - --verbose
+      - --global-response-templating
+    restart: unless-stopped
+
+  api-service-notifier:
+    depends_on:
+      wiremock:
+        condition: service_started
+    env_file: config/frontend/mock-notifier.env
+
+  api-service-sms-sender:
+    depends_on:
+      wiremock:
+        condition: service_started
+    env_file: config/frontend/mock-smssender.env
+
+  api-service-teams-sender:
+    environment:
+      SPRING_CONFIG_ADDITIONAL_LOCATION: file:/app/config/application.yml
+      SPRING_PROFILES_ACTIVE: mock
+      GRAPH_BASE_URL: http://wiremock:8080
+    env_file: config/frontend/mock-teams-sender.env
+
+  csv-filereader:
+    volumes:
+      - ./config/backend/application-csv-filereader.yml:/app/config/application.yml
+      - ./config/mock-data/OrgExport.csv:/data/temp/OrgExport.csv
+      - ./config/mock-data/EmpExport.csv:/data/temp/EmpExport.csv
+      - csv_incoming:/data/incoming
+      - csv_processed:/data/processed
+      - csv_failed:/data/failed
+
+  db:
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./config/db/db-init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - db_data_mock:/var/lib/mysql
+
+volumes:
+  db_data_mock:
+  csv_incoming:
+  csv_processed:
+  csv_failed:
