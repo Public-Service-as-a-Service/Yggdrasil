@@ -28,7 +28,7 @@ services:
       SPRING_CONFIG_ADDITIONAL_LOCATION: file:/app/config/application.yml
     ports:
       - "8082:8082"
-    env_file: config/frontend/.env-notifier
+    env_file: config/backend/.env-notifier
     volumes:
       - ./config/backend/application-notifier.yml:/app/config/application.yml
     restart: unless-stopped
@@ -42,7 +42,7 @@ services:
       SPRING_CONFIG_ADDITIONAL_LOCATION: file:/app/config/application.yml
     ports:
       - "8081:8081"
-    env_file: config/frontend/.env-webappusers
+    env_file: config/backend/.env-webappusers
     volumes:
       - ./config/backend/application-webappusers.yml:/app/config/application.yml
     restart: unless-stopped
@@ -51,7 +51,7 @@ services:
     image: ghcr.io/sundsvallskommun/api-service-sms-sender:latest
     environment:
       SPRING_CONFIG_ADDITIONAL_LOCATION: file:/app/config/application.yml
-    env_file: config/frontend/.env-smssender
+    env_file: config/backend/.env-smssender
     volumes:
       - ./config/backend/application-smssender.yml:/app/config/application.yml
     restart: unless-stopped
@@ -60,7 +60,7 @@ services:
     image: ghcr.io/public-service-as-a-service/api-service-teams-sender:latest
     environment:
       SPRING_CONFIG_ADDITIONAL_LOCATION: file:/app/config/application.yml
-    env_file: config/frontend/.env-teams-sender
+    env_file: config/backend/.env-teams-sender
     volumes:
       - ./config/backend/application-teams-sender.yml:/app/config/application.yml
     restart: unless-stopped
@@ -72,7 +72,7 @@ services:
         condition: service_healthy
     environment:
       SPRING_CONFIG_ADDITIONAL_LOCATION: file:/app/config/application.yml
-    env_file: config/frontend/.env-csv-filereader
+    env_file: config/backend/.env-csv-filereader
     volumes:
       - ./config/backend/application-csv-filereader.yml:/app/config/application.yml
       - /data/incoming:/data/incoming
