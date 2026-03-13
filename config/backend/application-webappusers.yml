@@ -5,6 +5,11 @@ logging:
 server:
   port: 8081
 
+user:
+  credentials:
+    email: ${USER_CREDENTIALS_EMAIL}
+    password: ${USER_CREDENTIALS_PASSWORD}
+
 spring:
   application:
     name: users
