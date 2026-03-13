@@ -1,6 +1,6 @@
-CompanyId,OrgId,OrgName,ParentId,TreeLevel
-1,1,Sundsvalls kommun,NULL,1
-1,13,Kommunstyrelsen,1,2
-1,41,Miljökontoret,13,3
-1,42,Stadsbyggnadskontoret,13,3
-1,43,Socialkontoret,13,3
+CompanyId;OrgId;OrgName;ParentId;TreeLevel
+1;1;Sundsvalls kommun;NULL;1
+1;13;Kommunstyrelsen;1;2
+1;41;Miljökontoret;13;3
+1;42;Stadsbyggnadskontoret;13;3
+1;43;Socialkontoret;13;3
