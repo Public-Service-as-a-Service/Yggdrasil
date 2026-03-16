@@ -84,7 +84,6 @@ services:
       - api-service-webappusers
     ports:
       - "3000:3000"
-    env_file: config/frontend/.env-nidhogg
     restart: unless-stopped
 
 volumes:

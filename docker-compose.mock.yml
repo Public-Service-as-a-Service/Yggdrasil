@@ -45,7 +45,6 @@ services:
     depends_on:
       wiremock:
         condition: service_started
-    env_file: config/frontend/.env-nidhogg
 
   db:
     ports:
