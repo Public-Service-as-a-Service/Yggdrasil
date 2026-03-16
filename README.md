@@ -25,11 +25,27 @@ Yggdrasil deploys all microservices and databases for the crisis communication s
 ```bash
 git clone git@github.com:Public-Service-as-a-Service/Yggdrasil.git
 cd Yggdrasil
+```
+
+Copy the example env files and fill in the required values:
+```bash
+for f in config/backend/.env-*.example; do cp "$f" "${f%.example}"; done
+```
+
+Then start the stack:
+```bash
 docker compose up -d
 ```
 
 ### Mock (local development)
 Starts the full stack with WireMock replacing external SMS and Teams APIs. Includes mock CSV data with 12 employees and 5 organizations. Uses a separate database volume (`db_data_mock`) so production data is never affected.
+
+Copy the example env files (if not already done):
+```bash
+for f in config/backend/.env-*.example; do cp "$f" "${f%.example}"; done
+```
+
+Then start the stack:
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.mock.yml up -d
 ```
@@ -47,14 +63,13 @@ docker compose -f docker-compose.yml -f docker-compose.mock.yml down -v
 ## Configuration
 
 ### Production
-Copy and fill in the required environment files:
+Fill in the required values in the copied environment files:
 ```
 config/backend/.env-notifier
 config/backend/.env-webappusers
 config/backend/.env-smssender
 config/backend/.env-teams-sender
 config/backend/.env-csv-filereader
-config/frontend/.env-nidhogg
 ```
 
 ### Mock

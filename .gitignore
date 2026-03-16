@@ -4,4 +4,3 @@ config/backend/.env-notifier
 config/backend/.env-smssender
 config/backend/.env-teams-sender
 config/backend/.env-webappusers
-config/frontend/.env*

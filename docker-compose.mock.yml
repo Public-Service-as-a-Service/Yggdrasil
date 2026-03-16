@@ -41,11 +41,13 @@ services:
       - csv_processed:/data/processed
       - csv_failed:/data/failed
 
+  api-service-webappusers:
+    env_file: config/backend/mock-webappusers.env
+
   web-app-nidhogg:
     depends_on:
       wiremock:
         condition: service_started
-    env_file: config/frontend/.env-nidhogg
 
   db:
     ports:
