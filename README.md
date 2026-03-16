@@ -1,17 +1,18 @@
 # Yggdrasil
 
-Yggdrasil deploys all backend microservices and databases for the crisis information system — spin up the full stack with a single command.
+Yggdrasil deploys all microservices and databases for the crisis communication system — spin up the full stack with a single command.
 
 ## Services & Ports
 
 | Service | Port | Purpose |
 |---|---|---|
-| api-service-notifier | 8082 | Sends notifications via SMS and Teams |
-| api-service-webappusers | 8081 | Manages web app users and authentication |
+| web-app-nidhogg | 3000 | Crisis communication frontend |
+| api-service-notifier | internal | Sends notifications via SMS and Teams |
+| api-service-webappusers | internal | Manages web app users and authentication |
 | api-service-sms-sender | internal | Sends SMS via Telia and Linkmobility |
 | api-service-teams-sender | internal | Sends messages via Microsoft Teams |
 | csv-filereader | internal | Imports organization and employee data from CSV |
-| MariaDB | internal | notifier and users databases |
+| MariaDB | internal | notifier, users and nidhogg databases |
 | WireMock (mock only) | 9090 | Mocks external SMS and Teams APIs |
 
 ## Requirements
@@ -33,9 +34,14 @@ Starts the full stack with WireMock replacing external SMS and Teams APIs. Inclu
 docker compose -f docker-compose.yml -f docker-compose.mock.yml up -d
 ```
 
+To stop and keep production data intact:
+```bash
+docker compose down
+```
+
 To stop and clean up the mock database:
 ```bash
-docker compose down --remove-orphans -v
+docker compose -f docker-compose.yml -f docker-compose.mock.yml down -v
 ```
 
 ## Configuration
@@ -43,19 +49,21 @@ docker compose down --remove-orphans -v
 ### Production
 Copy and fill in the required environment files:
 ```
-config/frontend/.env-notifier
-config/frontend/.env-webappusers
-config/frontend/.env-smssender
-config/frontend/.env-teams-sender
-config/frontend/.env-csv-filereader
+config/backend/.env-notifier
+config/backend/.env-webappusers
+config/backend/.env-smssender
+config/backend/.env-teams-sender
+config/backend/.env-csv-filereader
+config/frontend/.env-nidhogg
 ```
 
 ### Mock
 Mock environment files are included in the repo and require no configuration:
 ```
-config/frontend/mock-notifier.env
-config/frontend/mock-smssender.env
-config/frontend/mock-teams-sender.env
+config/backend/mock-notifier.env
+config/backend/mock-smssender.env
+config/backend/mock-teams-sender.env
+config/backend/mock-csv-filereader.env
 ```
 
 ## WireMock Tests

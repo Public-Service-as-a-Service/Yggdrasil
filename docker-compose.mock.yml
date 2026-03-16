@@ -41,6 +41,12 @@ services:
       - csv_processed:/data/processed
       - csv_failed:/data/failed
 
+  web-app-nidhogg:
+    depends_on:
+      wiremock:
+        condition: service_started
+    env_file: config/frontend/.env-nidhogg
+
   db:
     ports:
       - "3306:3306"

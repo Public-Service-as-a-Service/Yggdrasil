@@ -26,8 +26,6 @@ services:
         condition: service_started
     environment:
       SPRING_CONFIG_ADDITIONAL_LOCATION: file:/app/config/application.yml
-    ports:
-      - "8082:8082"
     env_file: config/backend/.env-notifier
     volumes:
       - ./config/backend/application-notifier.yml:/app/config/application.yml
@@ -40,8 +38,6 @@ services:
         condition: service_healthy
     environment:
       SPRING_CONFIG_ADDITIONAL_LOCATION: file:/app/config/application.yml
-    ports:
-      - "8081:8081"
     env_file: config/backend/.env-webappusers
     volumes:
       - ./config/backend/application-webappusers.yml:/app/config/application.yml
@@ -79,6 +75,16 @@ services:
       - /data/processed:/data/processed
       - /data/failed:/data/failed
       - /data/temp:/data/temp
+    restart: unless-stopped
+
+  web-app-nidhogg:
+    image: ghcr.io/public-service-as-a-service/web-app-nidhogg:latest
+    depends_on:
+      - api-service-notifier
+      - api-service-webappusers
+    ports:
+      - "3000:3000"
+    env_file: config/frontend/.env-nidhogg
     restart: unless-stopped
 
 volumes:
