@@ -27,7 +27,7 @@ git clone git@github.com:Public-Service-as-a-Service/Yggdrasil.git
 cd Yggdrasil
 ```
 
-Copy the example env files and fill in the required values:
+Create the environment files with placeholder values:
 ```bash
 for f in config/backend/.env-*.example; do cp "$f" "${f%.example}"; done
 ```
@@ -63,7 +63,7 @@ docker compose -f docker-compose.yml -f docker-compose.mock.yml down -v
 ## Configuration
 
 ### Production
-Fill in the required values in the copied environment files:
+Fill in the required values in the created environment files:
 ```
 config/backend/.env-notifier
 config/backend/.env-webappusers
