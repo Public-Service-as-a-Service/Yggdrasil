@@ -4,16 +4,16 @@ Yggdrasil deploys all microservices and databases for the crisis communication s
 
 ## Services & Ports
 
-| Service | Port | Purpose |
-|---|---|---|
-| web-app-nidhogg | 3000 | Crisis communication frontend |
-| api-service-notifier | internal | Sends notifications via SMS and Teams |
-| api-service-webappusers | internal | Manages web app users and authentication |
-| api-service-sms-sender | internal | Sends SMS via Telia and Linkmobility |
-| api-service-teams-sender | internal | Sends messages via Microsoft Teams |
+| Service | Port | Purpose                                         |
+|---|---|-------------------------------------------------|
+| web-app-nidhogg | 3000 | Crisis communication frontend                   |
+| api-service-notifier | internal | Sends notifications via SMS and Teams           |
+| api-service-webappusers | internal | Manages web app users and authentication        |
+| api-service-sms-sender | internal | Sends SMS via Telia and Linkmobility            |
+| api-service-teams-sender | internal | Sends messages via Microsoft Teams              |
 | csv-filereader | internal | Imports organization and employee data from CSV |
-| MariaDB | internal | notifier, users and nidhogg databases |
-| WireMock (mock only) | 9090 | Mocks external SMS and Teams APIs |
+| MariaDB | internal | notifier, users and teamssender databases       |
+| WireMock (mock only) | 9090 | Mocks external SMS and Teams APIs               |
 
 ## Requirements
 
