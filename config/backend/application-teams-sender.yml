@@ -16,7 +16,9 @@ spring:
     username: ${ENV_DB_USERNAME}
     password: ${ENV_DB_PASSWORD}
     driver-class-name: org.mariadb.jdbc.Driver
-
+  jpa:
+    hibernate:
+      ddl-auto: create
 azure:
   ad:
     2281:
@@ -28,7 +30,8 @@ azure:
       authority-url: ${AZURE_AUTHORITY_URL}
       client-secret: ${AZURE_CLIENT_SECRET}
       login-url: ${AZURE_LOGIN_URL}
-
+graph:
+  base-url: ${GRAPH_URL}
 openapi:
   name: ${spring.application.name}
   title: ${spring.application.name}

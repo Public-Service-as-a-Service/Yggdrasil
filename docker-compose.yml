@@ -78,10 +78,12 @@ services:
     restart: unless-stopped
 
   web-app-nidhogg:
-    image: ghcr.io/public-service-as-a-service/web-app-nidhogg:latest
+    build:
+      context: D:/lia-Krisinfo/web-app-nidhogg/client
     depends_on:
       - api-service-notifier
       - api-service-webappusers
+      - api-service-teams-sender
     ports:
       - "3000:3000"
     restart: unless-stopped
