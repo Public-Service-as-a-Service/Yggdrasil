@@ -2,8 +2,6 @@ logging:
   level:
     root: INFO
 
-
-
 user:
   credentials:
     email: ${USER_CREDENTIALS_EMAIL}
