@@ -8,7 +8,7 @@ server:
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
   application:
     name: teamssender
   datasource:
@@ -16,9 +16,6 @@ spring:
     username: ${ENV_DB_USERNAME}
     password: ${ENV_DB_PASSWORD}
     driver-class-name: org.mariadb.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create
 azure:
   ad:
     2281:

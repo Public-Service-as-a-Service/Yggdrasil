@@ -78,8 +78,7 @@ services:
     restart: unless-stopped
 
   web-app-nidhogg:
-    build:
-      context: D:/lia-Krisinfo/web-app-nidhogg/client
+    image: ghcr.io/public-service-as-a-service/web-app-nidhogg:latest
     depends_on:
       - api-service-notifier
       - api-service-webappusers
