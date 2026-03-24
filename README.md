@@ -7,7 +7,7 @@ Yggdrasil deploys all microservices and databases for the crisis communication s
 | Service | Port | Purpose                                         |
 |---|---|-------------------------------------------------|
 | web-app-nidhogg | 3000 | Crisis communication frontend                   |
-| api-service-notifier | internal | Sends notifications via SMS and Teams           |
+| api-service-notifier | 8082 (mock only) | Sends notifications via SMS and Teams           |
 | api-service-webappusers | internal | Manages web app users and authentication        |
 | api-service-sms-sender | internal | Sends SMS via Telia and Linkmobility            |
 | api-service-teams-sender | internal | Sends messages via Microsoft Teams              |
@@ -76,6 +76,7 @@ config/backend/.env-csv-filereader
 Mock environment files are included in the repo and require no configuration:
 ```
 config/backend/mock-notifier.env
+config/backend/mock-webappusers.env
 config/backend/mock-smssender.env
 config/backend/mock-teams-sender.env
 config/backend/mock-csv-filereader.env
@@ -92,6 +93,7 @@ bash config/wiremock/tests/run_all.sh
 # Run a specific suite
 bash config/wiremock/tests/run_all.sh sms
 bash config/wiremock/tests/run_all.sh teams
+bash config/wiremock/tests/run_all.sh e2e
 ```
 
 See [config/wiremock/tests/README.md](config/wiremock/tests/README.md) for more details.

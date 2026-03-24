@@ -45,29 +45,32 @@ Sends a real message via the notifier API and verifies that WireMock received th
 ## Output
 
 ```
-Running 3 suite(s): sms teams e2e
+Running 3 suite(s): e2e sms teams
 
-[1/3] sms
-GetToken ✓
-SendSms ✓
-Summary: 2 total, 2 passed, 0 failed
-sms ✓
-
-[2/3] teams
-GetMe ✓
-GetUser ✓
-CreateChat ✓
-SendMessage ✓
-Summary: 4 total, 4 passed, 0 failed
-teams ✓
-
-[3/3] e2e
+[1/3] e2e
 SendSmsViaNotifier ✓
 WireMockReceivedSms ✓
 SendTeamsViaNotifier ✓
 WireMockReceivedTeams ✓
+
 Summary: 4 total, 4 passed, 0 failed
 e2e ✓
+
+[2/3] sms
+GetToken ✓
+SendSms ✓
+
+Summary: 2 total, 2 passed, 0 failed
+sms ✓
+
+[3/3] teams
+GetMe ✓
+GetUser ✓
+CreateChat ✓
+SendMessage ✓
+
+Summary: 4 total, 4 passed, 0 failed
+teams ✓
 
 Suites summary: 3 total, 3 passed, 0 failed
 ```

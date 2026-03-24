@@ -30,7 +30,7 @@ _request() {
   local _args=("-sS" "-o" "$_tmp_body" "-w" "%{http_code}")
   case "$_method" in
     GET)   _args+=("$_url") ;;
-    POST)  _args+=("-X" "POST" "-H" "Content-Type: application/json" "-d" "${_data:-{}}" "$_url") ;;
+    POST)  _args+=("-X" "POST" "-H" "Content-Type: application/json" "-d" "${_data:-\{\}}" "$_url") ;;
     *) echo "Invalid method: $_method" >&2; rm -f "$_tmp_body"; return 2 ;;
   esac
   local _status

@@ -13,7 +13,7 @@ for arg in "$@"; do
       ;;
     --help|-h)
       echo "Usage: $0 [--fail-fast] [suiteName ...]"
-      echo "  Available suites: sms, teams"
+      echo "  Available suites: e2e, sms, teams"
       exit 0
       ;;
     *)

@@ -2,9 +2,6 @@ logging:
   level:
     root: INFO
 
-server:
-  port: 8081
-
 user:
   credentials:
     email: ${USER_CREDENTIALS_EMAIL}
