@@ -4,6 +4,35 @@
       "priority": 1,
       "request": {
         "method": "GET",
+        "urlPathPattern": "/[^/]+/oauth2/v2.0/authorize"
+      },
+      "response": {
+        "status": 302,
+        "headers": {
+          "Location": "http://localhost:3000/api/teamssender/callback?code=fake-auth-code&state=2281"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "POST",
+        "url": "/mock-tenant-id/oauth2/v2.0/token"
+      },
+      "response": {
+        "status": 200,
+        "headers": { "Content-Type": "application/json" },
+        "jsonBody": {
+          "access_token": "mock-access-token",
+          "token_type": "Bearer",
+          "expires_in": 3600
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
         "url": "/me"
       },
       "response": {
