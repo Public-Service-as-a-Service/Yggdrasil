@@ -2,9 +2,6 @@ logging:
   level:
     root: INFO
 
-server:
-  port: 8082
-
 spring:
   application:
     name: notifier
