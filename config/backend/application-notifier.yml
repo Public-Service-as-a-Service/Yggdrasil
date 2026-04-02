@@ -39,6 +39,9 @@ integration:
   teams-sender:
     base-url: ${ENV_TEAMS_SENDER_BASE_URL}
 
+jwt:
+  secret: ${JWT_SECRET}
+
 openapi:
   name: ${spring.application.name}
   title: ${spring.application.name}

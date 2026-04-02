@@ -29,6 +29,12 @@ services:
     env_file: config/backend/.env-notifier
     volumes:
       - ./config/backend/application-notifier.yml:/app/config/application.yml
+    healthcheck:
+      test: ["CMD", "bash", "-c", "echo > /dev/tcp/localhost/8080"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
     restart: unless-stopped
 
   api-service-webappusers:
@@ -41,6 +47,12 @@ services:
     env_file: config/backend/.env-webappusers
     volumes:
       - ./config/backend/application-webappusers.yml:/app/config/application.yml
+    healthcheck:
+      test: ["CMD", "bash", "-c", "echo > /dev/tcp/localhost/8080"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
     restart: unless-stopped
 
   api-service-sms-sender:
@@ -80,9 +92,12 @@ services:
   web-app-nidhogg:
     image: ghcr.io/public-service-as-a-service/web-app-nidhogg:latest
     depends_on:
-      - api-service-notifier
-      - api-service-webappusers
-      - api-service-teams-sender
+      api-service-notifier:
+        condition: service_healthy
+      api-service-webappusers:
+        condition: service_healthy
+      api-service-teams-sender:
+        condition: service_started
     ports:
       - "3000:3000"
     restart: unless-stopped
