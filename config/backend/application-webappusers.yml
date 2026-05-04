@@ -6,6 +6,8 @@ user:
   credentials:
     email: ${USER_CREDENTIALS_EMAIL}
     password: ${USER_CREDENTIALS_PASSWORD}
+    phoneNumber: ${USER_CREDENTIALS_PHONENUMBER}
+    municipalityId: ${USER_CREDENTIALS_MUNICIPALITYID}
 
 spring:
   application:
@@ -24,10 +26,6 @@ spring:
               action: validate
   flyway:
     enabled: true
-
-properties:
-  credentials:
-    secret-key: ${CREDENTIALS_SECRET_KEY}
 
 jwt:
   secret: ${JWT_SECRET}
